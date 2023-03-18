@@ -6,7 +6,7 @@
 /*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 01:59:29 by satushi           #+#    #+#             */
-/*   Updated: 2023/03/18 21:20:42 by mochitteiun      ###   ########.fr       */
+/*   Updated: 2023/03/18 22:41:39 by mochitteiun      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,5 +91,7 @@ bool	sleeping(t_philo *info)
 	if (info->all_info->time_to_sleep > info->all_info->time_to_die)
 		return (false);
 	usleep(1000 * info->all_info->time_to_sleep);
+	if (info->number_of_philo == 2 && info->all_info->philo_num % 2 == 1)
+		usleep(200);
 	return (true);
 }

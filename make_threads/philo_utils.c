@@ -32,7 +32,7 @@ bool	even_pn_startlife(t_allinfo *info, size_t *philo_num)
 bool	add_pn_startlife(t_allinfo *info, size_t *philo_num)
 {
 	if ((*philo_num) % 2 == 1 && *philo_num == 1)
-		usleep(100);
+		usleep(200);
 	if (start_philolife(&((info->philoinfo)[*philo_num])) == false)
 		return (false);
 	*philo_num = *philo_num + 2;
