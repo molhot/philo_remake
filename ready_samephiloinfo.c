@@ -30,7 +30,10 @@ bool	create_samephilo(t_allinfo *info)
 	l_f_n = 2;
 	info->philoinfo = (t_philo *)malloc(sizeof(t_allinfo) * info->philo_num);
 	if (info->philoinfo == NULL)
+	{
+		malloc_error();
 		return (false);
+	}
 	while (l_f_n != info->philo_num + 1)
 	{
 		insert_info_tophilo(l_f_n, info);

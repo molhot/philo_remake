@@ -6,7 +6,7 @@
 /*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 01:59:29 by satushi           #+#    #+#             */
-/*   Updated: 2023/03/18 22:57:16 by mochitteiun      ###   ########.fr       */
+/*   Updated: 2023/03/19 00:53:50 by mochitteiun      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,7 @@ bool	eat_countup(t_philo *info, int num)
 		return (false);
 	info->how_eated = info->how_eated + 1;
 	pthread_mutex_unlock(&(info->all_info->status[num]));
-	pthread_mutex_lock(&(info->all_info->timecheck_same[num]));
-	info->philo_livedstart = getnowtime();
-	pthread_mutex_unlock(&(info->all_info->timecheck_same[num]));
+	livestart_ch(info);
 	return (true);
 }
 

@@ -12,6 +12,13 @@
 
 #include "../philosophers.h"
 
+void	mutex_destroy_component(t_allinfo *info)
+{
+	pthread_mutex_destroy(&info->write);
+	pthread_mutex_destroy(&info->diecheck);
+	pthread_mutex_destroy(&info->correctend);
+}
+
 void	mutex_destroy(t_allinfo *info)
 {
 	int	num;

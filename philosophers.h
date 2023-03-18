@@ -6,22 +6,17 @@
 /*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 22:57:45 by satushi           #+#    #+#             */
-/*   Updated: 2023/03/19 00:46:41 by mochitteiun      ###   ########.fr       */
+/*   Updated: 2023/03/19 01:25:10 by mochitteiun      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILOSOPHERS_H
 # define PHILOSOPHERS_H
-# define ERROR_ARGUMENT 1
-# define ERROR_MALLOC 2
+# define ERROR_ARGUMENTNUM "ARGMENT is not correct amount"
+# define ERROR_ARGUMENTMINUS "ARGMENT contains minus value"
+# define ERROR_MUTEX "MUTEX is not corrective started"
+# define ERROR_MALLOC "MALLOC error"
 # define ERROR_PHILOINFO 3
-# define T_L_F "TAKE LEFT FORK"
-# define T_R_F "TAKE RIGHT FORK"
-# define D_L_F "DROP LEFT FORK"
-# define D_R_F "DROP RIGHT FORK"
-# define EAT "eating now, mogumogu okayu~~~"
-# define THINK "thinking now ...mmm"
-# define SLEEP "sleeping now ...zzZZ"
 
 # include <string.h>
 # include <stdlib.h>
@@ -100,6 +95,10 @@ bool			error_unlokallfork(t_philo *info, int l_f, int r_f);
 int				ft_atoi(const char *str);
 long long		getnowtime(void);
 bool			print_action(t_philo *info, char *action);
+void			argnum_error(void);
+void			argminus_error(void);
+void			mutex_error(void);
+void			malloc_error(void);
 /*---------------------------------------------------------*/
 
 /************************errorcheck*************************/
@@ -113,6 +112,7 @@ int				print_errormessage(int errornum);
 /***********************handlemutex*************************/
 bool			mutexinit(t_allinfo *allinfo);
 bool			create_forks(t_allinfo *info);
+void			mutex_destroy_component(t_allinfo *info);
 /*---------------------------------------------------------*/
 
 /**********************handlethreads************************/

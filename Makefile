@@ -8,7 +8,7 @@ SRCS = main.c\
 		philosophers_action/philo_behavior.c philosophers_action/philo_think_eat.c\
 		philosophers_action/behave_onefork.c philosophers_action/behave_twofork.c\
 		commonvariable/handle_commonval.c\
-		basic_func/ft_atoi.c basic_func/print_action.c basic_func/ft_getnowtime.c\
+		basic_func/ft_atoi.c basic_func/print_action.c basic_func/ft_getnowtime.c basic_func/putserror.c\
 		checker.c\
 		free/destroy_mutex.c free/free.c
 

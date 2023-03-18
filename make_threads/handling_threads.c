@@ -6,7 +6,7 @@
 /*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 15:01:14 by satushi           #+#    #+#             */
-/*   Updated: 2023/03/18 13:45:55 by mochitteiun      ###   ########.fr       */
+/*   Updated: 2023/03/19 00:57:13 by mochitteiun      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,13 +59,6 @@ bool	create_threads_ult(t_allinfo *info)
 	philo_num = 1;
 	while ((int)philo_num < info->philo_num)
 		add_pn_startultlife(info, &philo_num);
-	philo_num = 0;
-	while ((int)philo_num != info->philo_num)
-	{
-		pthread_join((info->philoinfo[philo_num]).philo_thread, NULL);
-		philo_num++;
-	}
-	usleep(200);
 	if (checker_start(info) == false)
 		return (false);
 	return (true);

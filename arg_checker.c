@@ -6,7 +6,7 @@
 /*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 20:37:36 by satushi           #+#    #+#             */
-/*   Updated: 2023/03/17 15:16:40 by mochitteiun      ###   ########.fr       */
+/*   Updated: 2023/03/19 01:10:02 by mochitteiun      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,18 @@ bool	arg_check(int argnum, char **arg)
 	size_t	arg_position;
 
 	if (argnum != 5 && argnum != 6)
+	{
+		argnum_error();
 		return (false);
+	}
 	arg_position = 1;
 	while (arg[arg_position] != NULL)
 	{
 		if (argment_check(arg[arg_position]) == false)
+		{
+			argminus_error();
 			return (false);
+		}
 		arg_position++;
 	}
 	return (true);

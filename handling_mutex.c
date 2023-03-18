@@ -15,16 +15,29 @@
 bool	mutexinit(t_allinfo *allinfo)
 {
 	if (pthread_mutex_init(&(allinfo->write), NULL) != 0)
+	{
+		mutex_error();
 		return (false);
+	}
 	if (pthread_mutex_init(&(allinfo->correctend), NULL) != 0)
+	{
+		pthread_mutex_destroy(&allinfo->write);
+		mutex_error();
 		return (false);
+	}
 	if (pthread_mutex_init(&(allinfo->diecheck), NULL) != 0)
+	{
+		pthread_mutex_destroy(&allinfo->write);
+		pthread_mutex_destroy(&allinfo->correctend);
+		mutex_error();
 		return (false);
+	}
 	return (true);
 }
 
 static	bool	freereturn(t_allinfo *info)
 {
+	malloc_error();
 	free_mutex(info);
 	return (false);
 }

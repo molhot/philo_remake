@@ -47,6 +47,13 @@ static	bool	makingthread(t_allinfo *allinfo)
 	return (true);
 }
 
+static void	all_free(t_allinfo *allinfo)
+{
+	mutex_destroy(allinfo);
+	free(allinfo->philoinfo);
+	free_mutex(allinfo);
+}
+
 int	main(int argc, char *argv[])
 {
 	t_allinfo	allinfo;
@@ -57,15 +64,20 @@ int	main(int argc, char *argv[])
 	if (mutexinit(&allinfo) == false)
 		return (1);
 	if (create_forks(&allinfo) == false)
-		return (1);
-	if (create_samephilo(&allinfo) == false)
-		return (1);
-	if (makingthread(&allinfo) == false)
 	{
-		mutex_destroy(&allinfo);
+		mutex_destroy_component(&allinfo);
 		return (1);
 	}
-	mutex_destroy(&allinfo);
-	free(allinfo.philoinfo);
-	free_mutex(&allinfo);
+	if (create_samephilo(&allinfo) == false)
+	{
+		mutex_destroy(&allinfo);
+		free_mutex(&allinfo);
+		return (1);
+	}
+	if (makingthread(&allinfo) == false)
+	{
+		all_free(&allinfo);
+		return (1);
+	}
+	all_free(&allinfo);
 }
