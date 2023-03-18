@@ -17,7 +17,6 @@ bool	start_philolife(t_philo *subject)
 	if (pthread_create(&(subject->philo_thread), NULL, \
 	&philolife_life, (void *)(subject)) != 0)
 		return (false);
-	//pthread_detach(subject->philo_thread);
 	return (true);
 }
 

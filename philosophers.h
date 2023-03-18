@@ -6,7 +6,7 @@
 /*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 22:57:45 by satushi           #+#    #+#             */
-/*   Updated: 2023/03/18 13:32:29 by mochitteiun      ###   ########.fr       */
+/*   Updated: 2023/03/19 00:46:41 by mochitteiun      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,6 +138,12 @@ void			mutex_destroy(t_allinfo *info);
 
 /***********************free************************/
 void			free_mutex(t_allinfo *info);
+/*-------------------------------------------------*/
+
+/*********************commonval*********************/
+bool			die_check(t_allinfo *info);
+void			livestart_ch(t_philo *info);
+int				return_eatcount(t_philo *info);
 /*-------------------------------------------------*/
 
 void			*philo_func(void *info);

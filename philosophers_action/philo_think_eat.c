@@ -6,7 +6,7 @@
 /*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 01:59:29 by satushi           #+#    #+#             */
-/*   Updated: 2023/03/18 22:41:39 by mochitteiun      ###   ########.fr       */
+/*   Updated: 2023/03/18 22:57:16 by mochitteiun      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,16 +45,6 @@ bool	eat_drop(t_philo *info, int l_f, int r_f)
 	}
 	usleep(1000 * (long long)info->all_info->time_to_eat);
 	unlock_allfork(info, l_f, r_f);
-	// if (l_f - r_f != 1)
-	// {
-	// 	if (eat_countup(info, r_f) == false)
-	// 		return (false);
-	// }
-	// else
-	// {
-	// 	if (eat_countup(info, l_f) == false)
-	// 		return (false);
-	// }
 	if (eat_countup(info, info->number_of_philo - 1) == false)
 		return (false);
 	return (true);

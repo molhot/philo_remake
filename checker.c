@@ -6,7 +6,7 @@
 /*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 16:38:57 by satushi           #+#    #+#             */
-/*   Updated: 2023/03/18 18:58:03 by mochitteiun      ###   ########.fr       */
+/*   Updated: 2023/03/19 00:34:13 by mochitteiun      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,34 +41,35 @@ bool	check_eatsatisfied(t_allinfo *info, int philonum)
 	return (false);
 }
 
+static	bool	countup_f(t_allinfo *info, size_t philo_num, size_t *countup)
+{
+	if ((info->philoinfo)[philo_num].correctend == false \
+	&& check_eatsatisfied(info, philo_num) == true)
+	{
+		*countup = *countup + 1;
+		(info->philoinfo)[philo_num].correctend = true;
+	}
+	if ((int)*countup == info->philo_num)
+		return (true);
+	return (false);
+}
+
 void	*philo_checker(void *info_i)
 {
 	size_t		philo_num;
 	size_t		countup;
 	t_allinfo	*info;
-	bool		diecheck;
 
 	philo_num = 0;
 	countup = 0;
 	info = (t_allinfo *)info_i;
 	while (1)
 	{
-		pthread_mutex_lock(&(info->diecheck));
-		diecheck = info->philo_die_ornot;
-		pthread_mutex_unlock(&(info->diecheck));
-		if (diecheck == true)
+		if (die_check(info) == true)
 			return (NULL);
 		if (info->eat_limit != -1)
-		{
-			if ((info->philoinfo)[philo_num].correctend == false \
-			&& check_eatsatisfied(info, philo_num) == true)
-			{
-				countup++;
-				(info->philoinfo)[philo_num].correctend = true;
-			}
-			if ((int)countup == info->philo_num)
+			if (true == countup_f(info, philo_num, &countup))
 				break ;
-		}
 		if ((info->philoinfo)[philo_num].correctend == false)
 			philo_deathistrue(philo_num, info);
 		philo_num++;
