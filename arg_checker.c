@@ -6,7 +6,7 @@
 /*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 20:37:36 by satushi           #+#    #+#             */
-/*   Updated: 2023/03/19 01:10:02 by mochitteiun      ###   ########.fr       */
+/*   Updated: 2023/03/20 22:53:40 by mochitteiun      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,13 @@ static	bool	argment_check(char *argline)
 	return (true);
 }
 
+bool	zero_check(char *arg)
+{
+	if (arg[0] == '0' && arg[1] == '\0')
+		return (true);
+	return (false);
+}
+
 bool	arg_check(int argnum, char **arg)
 {
 	size_t	arg_position;
@@ -39,6 +46,11 @@ bool	arg_check(int argnum, char **arg)
 	arg_position = 1;
 	while (arg[arg_position] != NULL)
 	{
+		if (arg_position == 1 && zero_check(arg[arg_position]))
+		{
+			argminus_error();
+			return (false);
+		}
 		if (argment_check(arg[arg_position]) == false)
 		{
 			argminus_error();

@@ -6,18 +6,15 @@
 /*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 01:59:29 by satushi           #+#    #+#             */
-/*   Updated: 2023/03/19 00:53:50 by mochitteiun      ###   ########.fr       */
+/*   Updated: 2023/03/21 00:36:34 by mochitteiun      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philosophers.h"
 
-bool	eat_countup(t_philo *info, int num)
+bool	eat_countup(t_philo *info)
 {
-	if (pthread_mutex_lock(&(info->all_info->status[num])) != 0)
-		return (false);
 	info->how_eated = info->how_eated + 1;
-	pthread_mutex_unlock(&(info->all_info->status[num]));
 	livestart_ch(info);
 	return (true);
 }
@@ -43,7 +40,7 @@ bool	eat_drop(t_philo *info, int l_f, int r_f)
 	}
 	usleep(1000 * (long long)info->all_info->time_to_eat);
 	unlock_allfork(info, l_f, r_f);
-	if (eat_countup(info, info->number_of_philo - 1) == false)
+	if (eat_countup(info) == false)
 		return (false);
 	return (true);
 }
@@ -83,3 +80,7 @@ bool	sleeping(t_philo *info)
 		usleep(200);
 	return (true);
 }
+
+//1 ~~~~~~XXXXXXXXXXXXXX~~~~~~~~
+//2 XXXXXXXXXXXXX~~~~~~~XXXXXXXX
+//3 XXXXXX~~~~~~~XXXXXXXXXXXXXXX

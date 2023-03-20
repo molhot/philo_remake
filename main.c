@@ -20,6 +20,7 @@ static	void	ready_philoinfo(t_allinfo *info, int argc, char **argv)
 	info->time_to_sleep = ft_atoi(argv[4]);
 	info->time_to_think = 0;
 	info->philo_die_ornot = false;
+	info->eatend_count = 0;
 	if (argc == 6)
 		info->eat_limit = ft_atoi(argv[5]);
 	else
