@@ -6,7 +6,7 @@
 /*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 16:38:57 by satushi           #+#    #+#             */
-/*   Updated: 2023/03/21 20:24:00 by mochitteiun      ###   ########.fr       */
+/*   Updated: 2023/03/21 23:06:28 by mochitteiun      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,15 @@ bool	philo_deathistrue(size_t philo_num, t_allinfo *info)
 	now = getnowtime_ms();
 	if (now - info->philoinfo[philo_num].philo_livedstart > info->time_to_die * 1000)
 	{
-		if (print_action(info, philo_num + 1, "died") == false)
+		pthread_mutex_lock(&(info->diecheck));
+		if (print_die(info, philo_num + 1, "died") == false)
 		{
 			pthread_mutex_unlock(&(info->timecheck_same[philo_num]));
+			pthread_mutex_unlock(&(info->diecheck));
 			return (false);
 		}
-		pthread_mutex_unlock(&(info->timecheck_same[philo_num]));
-		pthread_mutex_lock(&(info->diecheck));
 		info->philo_die_ornot = true;
+		pthread_mutex_unlock(&(info->timecheck_same[philo_num]));
 		pthread_mutex_unlock(&(info->diecheck));
 		return (false);
 	}
@@ -42,6 +43,8 @@ void	*philo_checker(void *info_i)
 
 	philo_num = 0;
 	info = (t_allinfo *)info_i;
+	sleep(1);
+	return (NULL);
 	while (1)
 	{
 		if (info->eatend_count == info->philo_num)

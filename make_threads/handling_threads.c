@@ -6,7 +6,7 @@
 /*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 15:01:14 by satushi           #+#    #+#             */
-/*   Updated: 2023/03/21 01:16:00 by mochitteiun      ###   ########.fr       */
+/*   Updated: 2023/03/21 22:27:40 by mochitteiun      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,10 @@ static	bool	checker_start(t_allinfo *info)
 		pthread_join((info->philoinfo[philo_num]).philo_thread, NULL);
 		philo_num++;
 	}
+	printf("~~~~~~ en d\n");
 	if (pthread_join(info->checkthread, NULL) != 0)
 		return (false);
+	printf("thread en d\n");
 	return (true);
 }
 

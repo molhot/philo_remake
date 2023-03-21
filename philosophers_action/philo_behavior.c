@@ -6,7 +6,7 @@
 /*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 02:34:43 by satushi           #+#    #+#             */
-/*   Updated: 2023/03/21 00:35:36 by mochitteiun      ###   ########.fr       */
+/*   Updated: 2023/03/21 23:06:26 by mochitteiun      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	*philolife_life(void *info_t)
 
 	info = (t_philo *)info_t;
 	livestart_ch(info);
+	return (NULL);
 	while (1)
 	{
 		if (eat_drop(info, info->fork_info.l_fork, \
@@ -26,8 +27,6 @@ void	*philolife_life(void *info_t)
 		if (info->eat_limit <= (int)info->how_eated)
 			break ;
 		if (sleeping(info) == false)
-			return (NULL);
-		if (think(info) == false)
 			return (NULL);
 	}
 	info->all_info->eatend_count = info->all_info->eatend_count + 1;
@@ -41,14 +40,14 @@ void	*philolife_life_ult(void *info_t)
 
 	info = (t_philo *)info_t;
 	livestart_ch(info);
+	sleep(1);
+	return (NULL);
 	while (1)
 	{
 		if (eat_drop(info, info->fork_info.l_fork, \
 		info->fork_info.r_fork) == false)
 			return (NULL);
 		if (sleeping(info) == false)
-			return (NULL);
-		if (think(info) == false)
 			return (NULL);
 	}
 	return (NULL);

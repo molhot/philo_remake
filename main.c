@@ -77,8 +77,11 @@ int	main(int argc, char *argv[])
 	}
 	if (makingthread(&allinfo) == false)
 	{
+		printf("check in if\n");
 		all_free(&allinfo);
 		return (1);
 	}
+	printf("check\n");
 	all_free(&allinfo);
+	printf("check\n");
 }

@@ -6,7 +6,7 @@
 /*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 22:57:45 by satushi           #+#    #+#             */
-/*   Updated: 2023/03/21 19:58:09 by mochitteiun      ###   ########.fr       */
+/*   Updated: 2023/03/21 21:31:00 by mochitteiun      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,5 +149,6 @@ void			*philo_checker(void *info_i);
 void			*limited_philolife_even(void *info_t);
 void			*limited_philolife_add(void *info_t);
 bool			print_action(t_allinfo *info, size_t pn, char *action);
+bool			print_die(t_allinfo *info, size_t pn, char *action);
 
 #endif

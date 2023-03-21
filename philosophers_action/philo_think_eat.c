@@ -6,19 +6,19 @@
 /*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 01:59:29 by satushi           #+#    #+#             */
-/*   Updated: 2023/03/21 20:27:12 by mochitteiun      ###   ########.fr       */
+/*   Updated: 2023/03/21 20:57:51 by mochitteiun      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philosophers.h"
 
-void	wait_func(size_t time)
+void	wait_func(long long time)
 {
 	long long endtime;
 
-	endtime = getnowtime() + time;
-	while (getnowtime() <= endtime)
-		usleep(200);
+	endtime = getnowtime_ms();
+	while (getnowtime_ms() - endtime < time * 1000)
+		usleep(1000);
 }
 
 bool	eat_drop(t_philo *info, int l_f, int r_f)
@@ -40,15 +40,6 @@ bool	eat_drop(t_philo *info, int l_f, int r_f)
 	return (true);
 }
 
-bool	think(t_philo *info)
-{
-	if (print_action(info->all_info, info->number_of_philo, "is thinking") == false)
-		return (false);
-	if (info->all_info->time_to_think > info->all_info->time_to_die)
-		return (false);
-	return (true);
-}
-
 bool	sleeping(t_philo *info)
 {
 	if (print_action(info->all_info, info->number_of_philo, "is sleeping") == false)
@@ -56,5 +47,7 @@ bool	sleeping(t_philo *info)
 	if (info->all_info->time_to_sleep > info->all_info->time_to_die)
 		return (false);
 	wait_func(info->all_info->time_to_sleep);
+	if (print_action(info->all_info, info->number_of_philo, "is thinking") == false)
+		return (false);
 	return (true);
 }
