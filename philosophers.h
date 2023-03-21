@@ -6,7 +6,7 @@
 /*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 22:57:45 by satushi           #+#    #+#             */
-/*   Updated: 2023/03/21 01:16:57 by mochitteiun      ###   ########.fr       */
+/*   Updated: 2023/03/21 19:58:09 by mochitteiun      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,18 +84,16 @@ bool			eat_drop(t_philo *info, int l_f, int r_f);
 /*-------------------------------------------------------------*/
 
 /************************handlefork*****************************/
-void			unlock_rightfork(t_philo *info, int r_f);
-bool			error_unlockrightfork(t_philo *info, int r_f);
-void			unlock_leftfork(t_philo *info, int l_f);
-bool			error_unlockleftfork(t_philo *info, int l_f);
-void			unlock_allfork(t_philo *info, int l_f, int r_f);
-bool			error_unlokallfork(t_philo *info, int l_f, int r_f);
+bool			error_unlockonefork(pthread_mutex_t *f);
+void			unlock_allfork(pthread_mutex_t *lf, pthread_mutex_t *rf);
+bool			error_unlockallfork(pthread_mutex_t *lf, pthread_mutex_t *rf);
 /*-------------------------------------------------------------*/
 
 /************************basicfunc**************************/
 int				ft_atoi(const char *str);
 long long		getnowtime(void);
-bool			print_action(t_philo *info, char *action);
+long long		getnowtime_ms(void);
+// bool			print_action(t_philo *info, char *action);
 void			argnum_error(void);
 void			argminus_error(void);
 void			mutex_error(void);
@@ -144,12 +142,12 @@ void			free_mutex(t_allinfo *info);
 /*********************commonval*********************/
 bool			die_check(t_allinfo *info);
 void			livestart_ch(t_philo *info);
-int				return_eatcount(t_philo *info);
 /*-------------------------------------------------*/
 
 void			*philo_func(void *info);
 void			*philo_checker(void *info_i);
 void			*limited_philolife_even(void *info_t);
 void			*limited_philolife_add(void *info_t);
+bool			print_action(t_allinfo *info, size_t pn, char *action);
 
 #endif

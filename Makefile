@@ -6,7 +6,7 @@ SRCS = main.c\
 		handling_mutex.c\
 		make_threads/handling_threads.c make_threads/philo_utils.c make_threads/philoult_utils.c\
 		philosophers_action/philo_behavior.c philosophers_action/philo_think_eat.c\
-		philosophers_action/behave_onefork.c philosophers_action/behave_twofork.c\
+		philosophers_action/forkunlock.c\
 		commonvariable/handle_commonval.c\
 		basic_func/ft_atoi.c basic_func/print_action.c basic_func/ft_getnowtime.c basic_func/putserror.c\
 		checker.c\

@@ -12,24 +12,20 @@
 
 #include "../philosophers.h"
 
-void	unlock_rightfork(t_philo *info, int r_f)
+bool	error_unlockonefork(pthread_mutex_t *f)
 {
-	pthread_mutex_unlock(&info->all_info->forks[r_f]);
-}
-
-bool	error_unlockrightfork(t_philo *info, int r_f)
-{
-	unlock_rightfork(info, r_f);
+	pthread_mutex_unlock(f);
 	return (false);
 }
 
-void	unlock_leftfork(t_philo *info, int l_f)
+void	unlock_allfork(pthread_mutex_t *lf, pthread_mutex_t *rf)
 {
-	pthread_mutex_unlock(&info->all_info->forks[l_f]);
+	pthread_mutex_unlock(rf);
+	pthread_mutex_unlock(lf);
 }
 
-bool	error_unlockleftfork(t_philo *info, int l_f)
+bool	error_unlockallfork(pthread_mutex_t *lf, pthread_mutex_t *rf)
 {
-	unlock_rightfork(info, l_f);
+	unlock_allfork(lf, rf);
 	return (false);
 }
