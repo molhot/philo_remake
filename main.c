@@ -27,27 +27,6 @@
 // 		info->eat_limit = -1;
 // }
 
-static	bool	makingthread(t_allinfo *allinfo)
-{
-	if (allinfo->eat_limit != -1)
-	{
-		if (create_threads(allinfo) == false)
-		{
-			free(allinfo->philoinfo);
-			return (false);
-		}
-	}
-	else
-	{
-		if (create_threads_ult(allinfo) == false)
-		{
-			free(allinfo->philoinfo);
-			return (false);
-		}
-	}
-	return (true);
-}
-
 static void	all_free(t_allinfo *allinfo)
 {
 	mutex_destroy(allinfo);
@@ -61,13 +40,14 @@ int	main(int argc, char *argv[])
 
 	if (ready_info(&allinfo, argc, argv) == false)
 		return (1);
-	//constructer();
-	//destracter();
-	if (makingthread(&allinfo) == false)
-	{
-		all_free(&allinfo);
+	if (constructer(&allinfo) == false)
 		return (1);
-	}
+	//destracter();
+	// if (makingthread(&allinfo) == false)
+	// {
+	// 	all_free(&allinfo);
+	// 	return (1);
+	// }
 	all_free(&allinfo);
 }
 

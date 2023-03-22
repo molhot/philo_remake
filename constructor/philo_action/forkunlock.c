@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../philosophers.h"
+#include "../../philosophers.h"
 
 bool	error_unlockonefork(pthread_mutex_t *f)
 {

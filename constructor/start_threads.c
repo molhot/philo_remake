@@ -1,16 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handling_threads.c                                 :+:      :+:    :+:   */
+/*   start_threads.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/08 15:01:14 by satushi           #+#    #+#             */
-/*   Updated: 2023/03/22 12:46:30 by user             ###   ########.fr       */
+/*   Created: 2023/03/22 12:43:20 by user              #+#    #+#             */
+/*   Updated: 2023/03/22 14:26:43 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philosophers.h"
+
+static bool	start_philolife(t_philo *subject)
+{
+	if (pthread_create(&(subject->philo_thread), NULL, \
+	&philolife_life, (void *)(subject)) != 0)
+		return (false);
+	return (true);
+}
+
+static bool	startlife(t_allinfo *info, size_t *philo_num)
+{
+	if (start_philolife(&((info->philoinfo)[*philo_num])) == false)
+		return (false);
+	*philo_num = *philo_num + 2;
+	return (true);
+}
 
 static	bool	checker_start(t_allinfo *info)
 {
@@ -31,34 +47,18 @@ static	bool	checker_start(t_allinfo *info)
 	return (true);
 }
 
-bool	create_threads(t_allinfo *info)
+bool    constructer(t_allinfo *info)
 {
-	size_t	philo_num;
+    size_t	philo_num;
 
 	philo_num = 0;
 	while ((int)philo_num < info->philo_num)
-		even_pn_startlife(info, &philo_num);
+		startlife(info, &philo_num);
 	usleep(200);
 	philo_num = 1;
 	while ((int)philo_num < info->philo_num)
-		add_pn_startlife(info, &philo_num);
+		startlife(info, &philo_num);
 	usleep(200);
-	if (checker_start(info) == false)
-		return (false);
-	return (true);
-}
-
-bool	create_threads_ult(t_allinfo *info)
-{
-	size_t	philo_num;
-
-	philo_num = 0;
-	while ((int)philo_num < info->philo_num)
-		even_pn_startultlife(info, &philo_num);
-	usleep(200);
-	philo_num = 1;
-	while ((int)philo_num < info->philo_num)
-		add_pn_startultlife(info, &philo_num);
 	if (checker_start(info) == false)
 		return (false);
 	return (true);

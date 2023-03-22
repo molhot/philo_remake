@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 22:57:45 by satushi           #+#    #+#             */
-/*   Updated: 2023/03/22 12:20:45 by user             ###   ########.fr       */
+/*   Updated: 2023/03/22 14:29:55 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,6 @@ int				main(int argc, char *argv[]);
 
 /***********************philo'slife*************************/
 void			*philolife_life(void *info_t);
-void			*philolife_life_ult(void *info_t);
 /*---------------------------------------------------------*/
 
 /*************************actions*******************************/
@@ -113,10 +112,10 @@ void			mutex_destroy_component(t_allinfo *info);
 /*---------------------------------------------------------*/
 
 /**********************handlethreads************************/
+bool			makingthread(t_allinfo *allinfo);
 int				destroy_threads(t_allinfo *main);
 bool			create_threads(t_allinfo *info);
 bool			create_threads_ult(t_allinfo *info);
-bool			start_philolife(t_philo *subject);
 bool			even_pn_startlife(t_allinfo *info, size_t *philo_num);
 bool			even_pn_startultlife(t_allinfo *info, size_t *philo_num);
 bool			start_philolifeult(t_philo *subject);
@@ -150,5 +149,6 @@ void			*limited_philolife_even(void *info_t);
 void			*limited_philolife_add(void *info_t);
 bool			print_action(t_allinfo *info, size_t pn, char *action);
 bool			print_die(t_allinfo *info, size_t pn, char *action);
+bool		    constructer(t_allinfo *info);
 
 #endif
