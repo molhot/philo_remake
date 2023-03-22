@@ -6,7 +6,7 @@
 /*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 16:38:57 by satushi           #+#    #+#             */
-/*   Updated: 2023/03/21 23:06:28 by mochitteiun      ###   ########.fr       */
+/*   Updated: 2023/03/21 23:25:40 by mochitteiun      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,6 @@ void	*philo_checker(void *info_i)
 
 	philo_num = 0;
 	info = (t_allinfo *)info_i;
-	sleep(1);
-	return (NULL);
 	while (1)
 	{
 		if (info->eatend_count == info->philo_num)

@@ -6,7 +6,7 @@
 /*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 02:34:43 by satushi           #+#    #+#             */
-/*   Updated: 2023/03/21 23:06:26 by mochitteiun      ###   ########.fr       */
+/*   Updated: 2023/03/21 23:25:51 by mochitteiun      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	*philolife_life(void *info_t)
 
 	info = (t_philo *)info_t;
 	livestart_ch(info);
-	return (NULL);
 	while (1)
 	{
 		if (eat_drop(info, info->fork_info.l_fork, \
@@ -40,8 +39,6 @@ void	*philolife_life_ult(void *info_t)
 
 	info = (t_philo *)info_t;
 	livestart_ch(info);
-	sleep(1);
-	return (NULL);
 	while (1)
 	{
 		if (eat_drop(info, info->fork_info.l_fork, \

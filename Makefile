@@ -1,8 +1,7 @@
 NAME = philo
 
 SRCS = main.c\
-		arg_checker.c\
-		ready_samephiloinfo.c\
+		ready_info/ready_info.c ready_info/arg_checker.c ready_info/ready_samephiloinfo.c\
 		handling_mutex.c\
 		make_threads/handling_threads.c make_threads/philo_utils.c make_threads/philoult_utils.c\
 		philosophers_action/philo_behavior.c philosophers_action/philo_think_eat.c\

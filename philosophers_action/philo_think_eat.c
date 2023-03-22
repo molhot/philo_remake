@@ -6,7 +6,7 @@
 /*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 01:59:29 by satushi           #+#    #+#             */
-/*   Updated: 2023/03/21 20:57:51 by mochitteiun      ###   ########.fr       */
+/*   Updated: 2023/03/21 23:20:53 by mochitteiun      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ bool	eat_drop(t_philo *info, int l_f, int r_f)
 	if (print_action(info->all_info, info->number_of_philo, "has taken a fork") == false)
 		return (error_unlockallfork(&info->all_info->forks[l_f], &info->all_info->forks[r_f]));
 	if (print_action(info->all_info, info->number_of_philo, "is eating") == false)
-		return (false);
+		return (error_unlockallfork(&info->all_info->forks[l_f], &info->all_info->forks[r_f]));
 	if (info->all_info->time_to_eat > info->all_info->time_to_die)
 		return (error_unlockallfork(&info->all_info->forks[l_f], &info->all_info->forks[r_f]));
 	livestart_ch(info);

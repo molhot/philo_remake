@@ -59,6 +59,10 @@ int	main(int argc, char *argv[])
 {
 	t_allinfo	allinfo;
 
+	//if (ready_info(&allinfo, argc argv) == false)
+	//	return (1);
+	//constructer();
+	//destracter();
 	if (arg_check(argc, argv) == false)
 		return (1);
 	ready_philoinfo(&allinfo, argc, argv);
@@ -77,11 +81,22 @@ int	main(int argc, char *argv[])
 	}
 	if (makingthread(&allinfo) == false)
 	{
-		printf("check in if\n");
 		all_free(&allinfo);
 		return (1);
 	}
-	printf("check\n");
 	all_free(&allinfo);
-	printf("check\n");
 }
+
+//ready philo
+//	構造体のマロック
+//	mutexの初期化
+//	作った構造体へ代入
+
+//constructer
+//	threadの作成
+//	threadへの関数の紐づけ
+
+//destracter
+//	threadの削除
+//	mutexのdestroy
+//	mallocのfree
