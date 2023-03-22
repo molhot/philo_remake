@@ -12,21 +12,6 @@
 
 #include "philosophers.h"
 
-// static	void	ready_philoinfo(t_allinfo *info, int argc, char **argv)
-// {
-// 	info->philo_num = ft_atoi(argv[1]);
-// 	info->time_to_die = ft_atoi(argv[2]);
-// 	info->time_to_eat = ft_atoi(argv[3]);
-// 	info->time_to_sleep = ft_atoi(argv[4]);
-// 	info->time_to_think = 0;
-// 	info->philo_die_ornot = false;
-// 	info->eatend_count = 0;
-// 	if (argc == 6)
-// 		info->eat_limit = ft_atoi(argv[5]);
-// 	else
-// 		info->eat_limit = -1;
-// }
-
 static void	all_free(t_allinfo *allinfo)
 {
 	mutex_destroy(allinfo);
@@ -40,15 +25,9 @@ int	main(int argc, char *argv[])
 
 	if (ready_info(&allinfo, argc, argv) == false)
 		return (1);
-	printf("check\n");
 	if (constructer(&allinfo) == false)
 		return (1);
 	//destracter();
-	// if (makingthread(&allinfo) == false)
-	// {
-	// 	all_free(&allinfo);
-	// 	return (1);
-	// }
 	all_free(&allinfo);
 }
 

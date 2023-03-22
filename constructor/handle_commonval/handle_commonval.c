@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../philosophers.h"
+#include "../../philosophers.h"
 
 bool	die_check(t_allinfo *info)
 {

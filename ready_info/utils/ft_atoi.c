@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 12:08:46 by satushi           #+#    #+#             */
-/*   Updated: 2023/03/17 15:27:23 by mochitteiun      ###   ########.fr       */
+/*   Updated: 2023/03/22 15:09:08 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../philosophers.h"
+#include "../../philosophers.h"
 
 static int	sub_num(const char *first, int counter, int p_m)
 {

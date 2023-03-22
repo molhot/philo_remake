@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 20:37:36 by satushi           #+#    #+#             */
-/*   Updated: 2023/03/22 10:49:48 by user             ###   ########.fr       */
+/*   Updated: 2023/03/22 14:50:56 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static	bool	argment_check(char *argline)
 	return (true);
 }
 
-bool	zero_check(char *arg)
+static bool	zero_check(char *arg)
 {
 	if (arg[0] == '0' && arg[1] == '\0')
 		return (true);

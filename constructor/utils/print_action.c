@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   print_action.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:21:51 by satushi           #+#    #+#             */
-/*   Updated: 2023/03/21 21:52:00 by mochitteiun      ###   ########.fr       */
+/*   Updated: 2023/03/22 15:19:53 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../philosophers.h"
+#include "../../philosophers.h"
 
 bool	print_action(t_allinfo *info, size_t pn, char *action)
 {
