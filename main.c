@@ -40,6 +40,7 @@ int	main(int argc, char *argv[])
 
 	if (ready_info(&allinfo, argc, argv) == false)
 		return (1);
+	printf("check\n");
 	if (constructer(&allinfo) == false)
 		return (1);
 	//destracter();

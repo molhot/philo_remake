@@ -18,7 +18,7 @@ bool	ready_info(t_allinfo *allinfo, int argc, char **argv)
         return (false);
     if (ready_philosinfo(allinfo, argc, argv) == false)
         return (false);
-    if (create_samephilo(allinfo) != false)
+    if (create_samephilo(allinfo) == false)
         return (false);
     return (true);
 }
