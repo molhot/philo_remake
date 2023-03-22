@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   arg_checker.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 20:37:36 by satushi           #+#    #+#             */
-/*   Updated: 2023/03/20 22:53:40 by mochitteiun      ###   ########.fr       */
+/*   Updated: 2023/03/22 10:49:48 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philosophers.h"
+#include "../philosophers.h"
 
 static	bool	argment_check(char *argline)
 {

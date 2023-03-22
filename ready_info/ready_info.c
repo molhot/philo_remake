@@ -12,7 +12,13 @@
 
 #include "../philosophers.h"
 
-bool	ready_info(t_allinfo	allinfo)
+bool	ready_info(t_allinfo *allinfo, int argc, char **argv)
 {
-
+    if (arg_check(argc, argv) == false)
+        return (false);
+    if (ready_philosinfo(allinfo, argc, argv) == false)
+        return (false);
+    if (create_samephilo(allinfo) != false)
+        return (false);
+    return (true);
 }

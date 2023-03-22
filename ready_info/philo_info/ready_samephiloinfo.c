@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../philosophers.h"
+#include "../../philosophers.h"
 
 static	void	insert_info_tophilo(int philonum, t_allinfo *info)
 {

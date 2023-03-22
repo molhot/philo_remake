@@ -12,20 +12,20 @@
 
 #include "philosophers.h"
 
-static	void	ready_philoinfo(t_allinfo *info, int argc, char **argv)
-{
-	info->philo_num = ft_atoi(argv[1]);
-	info->time_to_die = ft_atoi(argv[2]);
-	info->time_to_eat = ft_atoi(argv[3]);
-	info->time_to_sleep = ft_atoi(argv[4]);
-	info->time_to_think = 0;
-	info->philo_die_ornot = false;
-	info->eatend_count = 0;
-	if (argc == 6)
-		info->eat_limit = ft_atoi(argv[5]);
-	else
-		info->eat_limit = -1;
-}
+// static	void	ready_philoinfo(t_allinfo *info, int argc, char **argv)
+// {
+// 	info->philo_num = ft_atoi(argv[1]);
+// 	info->time_to_die = ft_atoi(argv[2]);
+// 	info->time_to_eat = ft_atoi(argv[3]);
+// 	info->time_to_sleep = ft_atoi(argv[4]);
+// 	info->time_to_think = 0;
+// 	info->philo_die_ornot = false;
+// 	info->eatend_count = 0;
+// 	if (argc == 6)
+// 		info->eat_limit = ft_atoi(argv[5]);
+// 	else
+// 		info->eat_limit = -1;
+// }
 
 static	bool	makingthread(t_allinfo *allinfo)
 {
@@ -59,26 +59,10 @@ int	main(int argc, char *argv[])
 {
 	t_allinfo	allinfo;
 
-	//if (ready_info(&allinfo, argc argv) == false)
-	//	return (1);
+	if (ready_info(&allinfo, argc, argv) == false)
+		return (1);
 	//constructer();
 	//destracter();
-	if (arg_check(argc, argv) == false)
-		return (1);
-	ready_philoinfo(&allinfo, argc, argv);
-	if (mutexinit(&allinfo) == false)
-		return (1);
-	if (create_forks(&allinfo) == false)
-	{
-		mutex_destroy_component(&allinfo);
-		return (1);
-	}
-	if (create_samephilo(&allinfo) == false)
-	{
-		mutex_destroy(&allinfo);
-		free_mutex(&allinfo);
-		return (1);
-	}
 	if (makingthread(&allinfo) == false)
 	{
 		all_free(&allinfo);

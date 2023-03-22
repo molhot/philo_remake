@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philosophers.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mochitteiunon? <sakata19991214@gmail.co    +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 22:57:45 by satushi           #+#    #+#             */
-/*   Updated: 2023/03/21 21:31:00 by mochitteiun      ###   ########.fr       */
+/*   Updated: 2023/03/22 12:20:45 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,14 +109,11 @@ int				print_errormessage(int errornum);
 /*---------------------------------------------------------*/
 
 /***********************handlemutex*************************/
-bool			mutexinit(t_allinfo *allinfo);
-bool			create_forks(t_allinfo *info);
 void			mutex_destroy_component(t_allinfo *info);
 /*---------------------------------------------------------*/
 
 /**********************handlethreads************************/
 int				destroy_threads(t_allinfo *main);
-bool			create_forks(t_allinfo *info);
 bool			create_threads(t_allinfo *info);
 bool			create_threads_ult(t_allinfo *info);
 bool			start_philolife(t_philo *subject);
@@ -128,6 +125,9 @@ bool			add_pn_startultlife(t_allinfo *info, size_t *philo_num);
 /*---------------------------------------------------------*/
 
 /**********************readyphiloinfo***********************/
+bool			ready_info(t_allinfo *allinfo, int argc, char **argv);
+bool			arg_check(int argnum, char **arg);
+bool			ready_philosinfo(t_allinfo *info, int argc, char **argv);
 bool			create_samephilo(t_allinfo *info);
 /*---------------------------------------------------------*/
 
