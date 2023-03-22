@@ -12,7 +12,7 @@
 
 #include "../../philosophers.h"
 
-static	void	insert_info_tophilo(int philonum, t_allinfo *info)
+static	void	insert_info_tophilo(int philonum, t_allinfo *info, char **argv)
 {
 	((info->philoinfo)[philonum - 1]).fork_info.r_fork = philonum - 2;
 	((info->philoinfo)[philonum - 1]).fork_info.l_fork = philonum - 1;
@@ -21,9 +21,12 @@ static	void	insert_info_tophilo(int philonum, t_allinfo *info)
 	((info->philoinfo)[philonum - 1]).correctend = false;
 	((info->philoinfo)[philonum - 1]).eat_limit = info->eat_limit;
 	((info->philoinfo)[philonum - 1]).all_info = info;
+	((info->philoinfo)[philonum - 1]).time_to_eat = ft_atoi(argv[3]);
+	((info->philoinfo)[philonum - 1]).time_to_sleep = ft_atoi(argv[4]);
+	((info->philoinfo)[philonum - 1]).time_to_think = 0;
 }
 
-bool	create_samephilo(t_allinfo *info)
+bool	create_samephilo(t_allinfo *info, char **argv)
 {
 	int	l_f_n;
 
@@ -36,7 +39,7 @@ bool	create_samephilo(t_allinfo *info)
 	}
 	while (l_f_n != info->philo_num + 1)
 	{
-		insert_info_tophilo(l_f_n, info);
+		insert_info_tophilo(l_f_n, info, argv);
 		l_f_n++;
 	}
 	((info->philoinfo)[0]).fork_info.r_fork = 0;
@@ -47,5 +50,8 @@ bool	create_samephilo(t_allinfo *info)
 	((info->philoinfo)[0]).correctend = false;
 	((info->philoinfo)[0]).eat_limit = info->eat_limit;
 	((info->philoinfo)[0]).all_info = info;
+	((info->philoinfo)[0]).time_to_eat = ft_atoi(argv[3]);
+	((info->philoinfo)[0]).time_to_sleep = ft_atoi(argv[4]);
+	((info->philoinfo)[0]).time_to_think = 0;
 	return (true);
 }

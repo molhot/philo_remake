@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 22:57:45 by satushi           #+#    #+#             */
-/*   Updated: 2023/03/22 15:11:02 by user             ###   ########.fr       */
+/*   Updated: 2023/03/22 17:07:17 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,18 +39,13 @@ typedef struct philo_info	t_philo;
 
 typedef struct all_info {
 	pthread_mutex_t	*forks;
-	pthread_mutex_t	*status;
 	pthread_mutex_t	*timecheck_same;
 	pthread_mutex_t	write;
 	pthread_mutex_t	diecheck;
-	pthread_mutex_t	correctend;
 	t_philo			*philoinfo;
 	pthread_t		checkthread;
 	int				eatend_count;
 	int				philo_num;
-	int				time_to_eat;
-	int				time_to_sleep;
-	int				time_to_think;
 	int				time_to_die;
 	int				eat_limit;
 	bool			philo_die_ornot;
@@ -63,6 +58,9 @@ typedef struct philo_info{
 	t_fork			fork_info;
 	long long		time_to_die;
 	long long		philo_livedstart;
+	int				time_to_eat;
+	int				time_to_sleep;
+	int				time_to_think;
 	bool			correctend;
 	int				eat_limit;
 	t_allinfo		*all_info;
@@ -75,7 +73,7 @@ int				main(int argc, char *argv[]);
 bool			ready_info(t_allinfo *allinfo, int argc, char **argv);
 bool			arg_check(int argnum, char **arg);
 bool			ready_philosinfo(t_allinfo *info, int argc, char **argv);
-bool			create_samephilo(t_allinfo *info);
+bool			create_samephilo(t_allinfo *info, char **argv);
 
 //construct
 bool    		constructer(t_allinfo *info);

@@ -16,7 +16,6 @@ void	mutex_destroy_component(t_allinfo *info)
 {
 	pthread_mutex_destroy(&info->write);
 	pthread_mutex_destroy(&info->diecheck);
-	pthread_mutex_destroy(&info->correctend);
 }
 
 void	mutex_destroy(t_allinfo *info)
@@ -26,10 +25,8 @@ void	mutex_destroy(t_allinfo *info)
 	num = 0;
 	pthread_mutex_destroy(&info->write);
 	pthread_mutex_destroy(&info->diecheck);
-	pthread_mutex_destroy(&info->correctend);
 	while (num != info->philo_num)
 	{
-		pthread_mutex_destroy(&info->status[num]);
 		pthread_mutex_destroy(&info->forks[num]);
 		pthread_mutex_destroy(&info->timecheck_same[num]);
 		num++;

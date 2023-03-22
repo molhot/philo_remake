@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 16:38:57 by satushi           #+#    #+#             */
-/*   Updated: 2023/03/22 14:30:23 by user             ###   ########.fr       */
+/*   Updated: 2023/03/22 18:45:41 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,12 @@ bool	philo_deathistrue(size_t philo_num, t_allinfo *info)
 	if (now - info->philoinfo[philo_num].philo_livedstart > info->time_to_die * 1000)
 	{
 		pthread_mutex_lock(&(info->diecheck));
+		if (info->philo_die_ornot == true)
+		{
+			pthread_mutex_unlock(&(info->timecheck_same[philo_num]));
+			pthread_mutex_unlock(&(info->diecheck));
+			return (false);
+		}
 		if (print_die(info, philo_num + 1, "died") == false)
 		{
 			pthread_mutex_unlock(&(info->timecheck_same[philo_num]));
