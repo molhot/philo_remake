@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 12:43:20 by user              #+#    #+#             */
-/*   Updated: 2023/03/22 14:26:43 by user             ###   ########.fr       */
+/*   Updated: 2023/03/22 19:53:13 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static	bool	checker_start(t_allinfo *info)
 	&philo_checker, (void *)info) != 0)
 		return (false);
 	usleep(100);
-	while ((int)philo_num != info->philo_num)
+	while (philo_num != info->philo_num)
 	{
 		pthread_join((info->philoinfo[philo_num]).philo_thread, NULL);
 		philo_num++;
@@ -52,11 +52,11 @@ bool    constructer(t_allinfo *info)
     size_t	philo_num;
 
 	philo_num = 0;
-	while ((int)philo_num < info->philo_num)
+	while (philo_num < info->philo_num)
 		startlife(info, &philo_num);
 	usleep(200);
 	philo_num = 1;
-	while ((int)philo_num < info->philo_num)
+	while (philo_num < info->philo_num)
 		startlife(info, &philo_num);
 	usleep(200);
 	if (checker_start(info) == false)

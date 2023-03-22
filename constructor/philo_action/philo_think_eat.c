@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 01:59:29 by satushi           #+#    #+#             */
-/*   Updated: 2023/03/22 18:47:38 by user             ###   ########.fr       */
+/*   Updated: 2023/03/22 19:01:17 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,9 @@ static bool	wait_func(long long time, t_philo *info)
 bool	eat_drop(t_philo *info, int l_f, int r_f)
 {
 	pthread_mutex_lock(&info->all_info->forks[l_f]);
-	if (l_f == r_f || print_action(info->all_info, info->number_of_philo, "has taken a fork") == false)
+	if (print_action(info->all_info, info->number_of_philo, "has taken a fork") == false)
+		return (error_unlockonefork(&info->all_info->forks[l_f]));
+	if (l_f == r_f)
 		return (error_unlockonefork(&info->all_info->forks[l_f]));
 	pthread_mutex_lock(&info->all_info->forks[r_f]);
 	if (print_action(info->all_info, info->number_of_philo, "has taken a fork") == false)

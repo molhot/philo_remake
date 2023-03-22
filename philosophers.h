@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 22:57:45 by satushi           #+#    #+#             */
-/*   Updated: 2023/03/22 17:07:17 by user             ###   ########.fr       */
+/*   Updated: 2023/03/22 20:04:56 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,8 @@ typedef struct all_info {
 	pthread_mutex_t	diecheck;
 	t_philo			*philoinfo;
 	pthread_t		checkthread;
-	int				eatend_count;
-	int				philo_num;
+	size_t			philo_num;
 	int				time_to_die;
-	int				eat_limit;
 	bool			philo_die_ornot;
 }	t_allinfo;
 
@@ -72,8 +70,8 @@ int				main(int argc, char *argv[]);
 //check, ready
 bool			ready_info(t_allinfo *allinfo, int argc, char **argv);
 bool			arg_check(int argnum, char **arg);
-bool			ready_philosinfo(t_allinfo *info, int argc, char **argv);
-bool			create_samephilo(t_allinfo *info, char **argv);
+bool			ready_philosinfo(t_allinfo *info, char **argv);
+bool			create_samephilo(t_allinfo *info, char **argv, int argc);
 
 //construct
 bool    		constructer(t_allinfo *info);

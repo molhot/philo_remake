@@ -20,7 +20,7 @@ void	mutex_destroy_component(t_allinfo *info)
 
 void	mutex_destroy(t_allinfo *info)
 {
-	int	num;
+	size_t	num;
 
 	num = 0;
 	pthread_mutex_destroy(&info->write);

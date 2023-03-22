@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 16:38:57 by satushi           #+#    #+#             */
-/*   Updated: 2023/03/22 18:45:41 by user             ###   ########.fr       */
+/*   Updated: 2023/03/22 19:53:26 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,18 +46,25 @@ void	*philo_checker(void *info_i)
 {
 	size_t		philo_num;
 	t_allinfo	*info;
+	size_t		countup;
 
 	philo_num = 0;
+	countup = 0;
 	info = (t_allinfo *)info_i;
 	while (1)
 	{
-		if (info->eatend_count == info->philo_num)
-			return (NULL);
+		while ((info->philoinfo)[countup].correctend == true)
+		{
+			countup++;
+			if (countup == info->philo_num)
+				return (NULL);
+		}
+		countup = 0;
 		if ((info->philoinfo)[philo_num].correctend == false)
 			if (philo_deathistrue(philo_num, info) == false)
 				return (NULL);
 		philo_num++;
-		if ((int)philo_num == info->philo_num)
+		if (philo_num == info->philo_num)
 			philo_num = 0;
 		usleep(1000);
 	}

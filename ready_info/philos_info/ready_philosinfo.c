@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 10:51:36 by user              #+#    #+#             */
-/*   Updated: 2023/03/22 17:09:04 by user             ###   ########.fr       */
+/*   Updated: 2023/03/22 20:04:48 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static	bool	freereturn(t_allinfo *info)
 
 static	bool	create_forks(t_allinfo *info)
 {
-	int	fork_num;
+	size_t	fork_num;
 
 	info->forks = malloc(sizeof(pthread_mutex_t) * info->philo_num);
 	info->timecheck_same = malloc(sizeof(pthread_mutex_t) * info->philo_num);
@@ -55,16 +55,11 @@ static	bool	create_forks(t_allinfo *info)
 	return (true);
 }
 
-bool	ready_philosinfo(t_allinfo *info, int argc, char **argv)
+bool	ready_philosinfo(t_allinfo *info, char **argv)
 {
 	info->philo_num = ft_atoi(argv[1]);
 	info->time_to_die = ft_atoi(argv[2]);
 	info->philo_die_ornot = false;
-	info->eatend_count = 0;
-	if (argc == 6)
-		info->eat_limit = ft_atoi(argv[5]);
-	else
-		info->eat_limit = -1;
     if (philosmutex_init(info) == false)
         return (false);
     if (create_forks(info) == false)
